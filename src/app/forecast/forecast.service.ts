@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClientModule, HttpClient} from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -53,11 +54,13 @@ export class ForecastService {
   constructor(private _http: HttpClient) {
    }
 
-   public getDayForecast():IWeatherForecast{     
-    return this.WeekForecast[0];
+   public getDayForecast():Observable<IWeatherForecast>{     
+    //return this.WeekForecast[0];
+    return this._http.get<IWeatherForecast>("https://localhost:5001/weatherforecast/");
    }
-   public getWeekForecast():IWeatherForecast[]{     
-    return this.WeekForecast;
+   public getWeekForecast():Observable<IWeatherForecast[]>{     
+    //return this.WeekForecast;
+    return this._http.get<IWeatherForecast[]>("https://localhost:5001/weatherforecast/week");
    }
 }
 

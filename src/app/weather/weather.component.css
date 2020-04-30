@@ -1,0 +1,16 @@
+:host{
+    width: 100%;
+}
+
+.warm
+{
+    color: yellow;
+}
+.cold
+{
+    color: lightskyblue;
+}
+.hot
+{
+    color: orangered;
+}

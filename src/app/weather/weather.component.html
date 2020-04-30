@@ -1,8 +1,19 @@
-<mat-card>
-    <mat-card-header>
-        <mat-card-title>{{DayForecast.date}}</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        {{DayForecast.temperatureC}} &#8451; ({{DayForecast.summary}})
-      </mat-card-content>
+<button (click)="IsWeek=!IsWeek" >Switch</button>
+
+<div *ngIf="IsWeek; else dayBlock">
+  <p>WeekForecast</p>
+  <ul >
+    <li *ngFor="let f of WeekForecast"  [class]="getColor(f)">{{f.date|date:'dd.MM'}}:  {{f.temperatureC}} &#8451; ({{f.summary}})</li>
+  </ul>
+</div>
+
+<ng-template #dayBlock>
+  <mat-card>
+  <mat-card-header>
+      <mat-card-title>Today</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      {{DayForecast.temperatureC}} &#8451; ({{DayForecast.summary}})
+    </mat-card-content>
 </mat-card>
+</ng-template>
