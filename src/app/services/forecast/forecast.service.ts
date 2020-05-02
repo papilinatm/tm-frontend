@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClientModule, HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { SRV_URL } from 'src/app/config';
 
 @Injectable({
   providedIn: 'root'
@@ -56,11 +57,11 @@ export class ForecastService {
 
    public getDayForecast():Observable<IWeatherForecast>{     
     //return this.WeekForecast[0];
-    return this._http.get<IWeatherForecast>("https://localhost:5001/weatherforecast/");
+    return this._http.get<IWeatherForecast>(`${SRV_URL}/weatherforecast/`);
    }
    public getWeekForecast():Observable<IWeatherForecast[]>{     
     //return this.WeekForecast;
-    return this._http.get<IWeatherForecast[]>("https://localhost:5001/weatherforecast/week");
+    return this._http.get<IWeatherForecast[]>(`${SRV_URL}/weatherforecast/week`);
    }
 }
 

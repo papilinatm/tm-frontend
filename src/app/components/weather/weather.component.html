@@ -1,0 +1,14 @@
+
+<mat-slide-toggle [checked]="IsWeek" #st (change)="ChangeForecast(st.checked)">Week Forecast</mat-slide-toggle>
+<div class="card highlight-card">
+
+<div *ngIf="IsWeek; else dayBlock">
+  <app-one-day *ngFor="let f of WeekForecast" [f]="f">
+  </app-one-day>  
+</div>
+
+<ng-template #dayBlock>
+  <app-one-day [f]="DayForecast">
+  </app-one-day>  
+</ng-template>
+</div>

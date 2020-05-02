@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { MatDrawer } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-header',
@@ -8,10 +9,16 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
 
   public title= "TM forecast"
+  
+  @Input()
+  public sidenavDrawer!: MatDrawer;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  toggleSidenav(): void {
+    this.sidenavDrawer.toggle();
+  }
 }

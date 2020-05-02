@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ForecastService, IWeatherForecast } from '../forecast/forecast.service';
+import { ForecastService, IWeatherForecast } from '../../services/forecast/forecast.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-weather',
@@ -12,22 +13,17 @@ export class WeatherComponent implements OnInit {
   public WeekForecast:IWeatherForecast[];
   public IsWeek:boolean = false;
 
-  constructor(private _wfServise:ForecastService) { }
+  constructor(private activatedRoute: ActivatedRoute, private _wfServise:ForecastService, private route:Router) { 
+    this.IsWeek= activatedRoute.snapshot.params['week']=="week";
+  }
 
   ngOnInit(): void {
     this._wfServise.getDayForecast().subscribe(res=> {this.DayForecast=res;});
-
     this._wfServise.getWeekForecast().subscribe(res=> {this.WeekForecast=res;});
-
   }
-
-  public getColor(f: IWeatherForecast):string {
-    if(f.temperatureC<0)
-      return "cold";
-    else if (f.temperatureC<25)
-      return "warm";
-    else return "hot";
+  ChangeForecast(isWeek:boolean){
+    //this.IsWeek=isWeek;
+    this.route.navigate([isWeek?'week':''], {relativeTo: this.activatedRoute});
   }
-
 }
 

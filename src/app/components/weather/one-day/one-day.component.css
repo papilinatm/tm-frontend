@@ -1,10 +1,6 @@
-:host{
-    width: 100%;
-}
-
 .warm
 {
-    color: yellow;
+    color: green;
 }
 .cold
 {

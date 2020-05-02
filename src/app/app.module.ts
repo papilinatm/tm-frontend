@@ -3,24 +3,31 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { HttpClientModule} from '@angular/common/http';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatCardModule, MatCard} from '@angular/material/card';
-import { WeatherComponent } from './weather/weather.component';
+import { HeaderComponent } from './components/header/header.component';
+
+import { WeatherComponent } from './components/weather/weather.component';
+import { LoginComponent } from './components/login/login.component';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { NginfoComponent } from './components/nginfo/nginfo.component';
+import { SharedModule } from './shared/shared.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { OneDayComponent } from './components/weather/one-day/one-day.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    WeatherComponent
+    WeatherComponent,
+    LoginComponent,
+    SidenavComponent,
+    NginfoComponent,
+    OneDayComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
-    MatToolbarModule,
-    MatCardModule
+    SharedModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
