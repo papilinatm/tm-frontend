@@ -7,17 +7,25 @@ import {MatCardModule, MatCard} from '@angular/material/card';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { FormsModule } from '@angular/forms';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   exports: [
     CommonModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    FormsModule,
+    MatFormFieldModule,
     MatToolbarModule,
     MatCardModule,
     MatSidenavModule,
     MatListModule,
     MatSlideToggleModule,
+    MatInputModule,
+    MatButtonModule
   ],
 
 })
