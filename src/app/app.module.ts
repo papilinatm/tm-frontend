@@ -12,6 +12,8 @@ import { NginfoComponent } from './components/nginfo/nginfo.component';
 import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OneDayComponent } from './components/weather/one-day/one-day.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTPInterceptorService } from './services/http-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,13 @@ import { OneDayComponent } from './components/weather/one-day/one-day.component'
     SharedModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HTTPInterceptorService,
+      multi:true,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClientModule, HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
+import { HttpClient, HttpResponse} from '@angular/common/http';
 import { SRV_URL } from 'src/app/config';
 import {Md5} from 'ts-md5/dist/md5';
 import { Observable, of } from 'rxjs';
@@ -16,7 +16,7 @@ export class AuthService {
     
     info.password = Md5.hashStr(info.password) as string
     
-    return this._http.post<any>(`${SRV_URL}/api/auth/`, info, {observe: 'response'})
+    return this._http.post<any>("/api/auth/", info, {observe: 'response'})
             .pipe(
               map(res=> 
               {
@@ -32,9 +32,6 @@ export class AuthService {
   }
   
   public sendTestRequest(){
-    const token = localStorage.getItem('token');
-    let headers= new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    
-    this._http.get(`${SRV_URL}/weatherforecast/summaries`, { headers: headers }).subscribe(res=> alert(res));
+    this._http.get("/weatherforecast/summaries").subscribe(res=> alert(res));
   }
 }
